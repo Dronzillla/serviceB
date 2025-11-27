@@ -19,3 +19,17 @@ def send_email_notification(to_email, subject, message):
 
     except Exception as e:
         print(f"Error sending notification: {e}")
+
+
+def main():
+    send_email_notification(
+        to_email=SMTP_USERNAME,
+        subject="Btc price",
+        message="Testing SMTP set up manually",
+    )
+    # For testing the SMTP manually run this in the main directory
+    # python3 -m notifications.notify
+
+
+if __name__ == "__main__":
+    main()
