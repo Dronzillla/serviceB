@@ -1,8 +1,21 @@
-from datetime import datetime, timezone
+import smtplib
+from email.mime.text import MIMEText
+from config import SMTP_SERVER, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD
 
 
-def send_notification(email: str, threshold: float, price: float):
-    print(
-        f"[{datetime.now(timezone.utc).isoformat()}] "
-        f"NOTIFY → email={email}, price={price}, threshold={threshold}"
-    )
+def send_email_notification(to_email, subject, message):
+    msg = MIMEText(message)
+    msg["Subject"] = subject
+    msg["From"] = SMTP_USERNAME
+    msg["To"] = to_email
+
+    try:
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as smtp:
+            smtp.starttls()
+            smtp.login(SMTP_USERNAME, SMTP_PASSWORD)
+            smtp.send_message(msg)
+
+        print("Notification sent!")
+
+    except Exception as e:
+        print(f"Error sending notification: {e}")
