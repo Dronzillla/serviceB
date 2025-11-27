@@ -1,10 +1,17 @@
 import os
+from dotenv import load_dotenv
 
-# Address inside Kubernetes cluster
-SERVICE_A_BASE = os.getenv("SERVICE_A_BASE", "http://service-a:5000/api")
+# Load .env variables
+load_dotenv()
 
-# External BTC price API
+# SMTP configuration
+SMTP_SERVER = os.getenv("SMTP_SERVER")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_USERNAME = os.getenv("SMTP_USERNAME")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
+NOTIFICATION_EMAIL_TO = os.getenv("NOTIFICATION_EMAIL_TO")
+
+# Other config
 BTC_PRICE_API = "https://api.coingecko.com/api/v3/simple/price"
-
-# Default timeout for HTTP calls
-HTTP_TIMEOUT = 10
+HTTP_TIMEOUT = 5
+ALERT_THRESHOLD_EUR = 60000

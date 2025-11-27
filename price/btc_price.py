@@ -16,6 +16,8 @@ def get_btc_price_eur():
 def main():
     price = get_btc_price_eur()
     print(f"Current Bitcoin price in EUR: {price}")
+    # For testing the API manually run this in the main directory
+    # python3 -m price.btc_price
 
 
 if __name__ == "__main__":
