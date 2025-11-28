@@ -15,3 +15,4 @@ NOTIFICATION_EMAIL_TO = os.getenv("NOTIFICATION_EMAIL_TO")
 BTC_PRICE_API = "https://api.coingecko.com/api/v3/simple/price"
 HTTP_TIMEOUT = 5
 ALERT_THRESHOLD_EUR = 60000
+SERVICE_A_BASE = "http://127.0.0.1:5000"
